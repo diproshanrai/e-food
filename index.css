@@ -1,0 +1,50 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aqua;
+}
+
+.header .logo {
+display: flex;
+align-items: center;
+padding-left: 20px;
+}
+
+.header .logo img {
+width: 60px;
+height: 60px;
+}
+
+.links {
+    padding-right: 30px;
+}
+
+.links a {
+    margin: 10px;
+}
+
+.search {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.resCardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.resCard {
+    width: 200px;
+    padding: 10px;
+
+}
+
+.resCard img {
+    width: 180px;
+    height: 130px;
+}
