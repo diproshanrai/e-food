@@ -44,6 +44,11 @@ height: 60px;
 
 }
 
+.resCard:hover{
+    border: 5px solid black;
+    cursor: pointer;
+}
+
 .resCard img {
     width: 180px;
     height: 130px;
