@@ -1,13 +1,14 @@
-import { resList } from "../utils/dummyData";
+
 import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestro, setlistOfRestro] = useState([]);
 
   const filteredTopRes = () => {
-    const filteredList = resList.filter(
-      (restaurant) => restaurant.restaurant.user_rating.aggregate_rating > 4.3
+    const filteredList = listOfRestro.filter(
+      (restaurant) => restaurant.info.avgRating > 4.3
     );
     setlistOfRestro(filteredList);
   };
@@ -27,8 +28,16 @@ const Body = () => {
       json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  //Conditional rendering simple
+  // if (listOfRestro.length == 0){
+  //   return <Shimmer/>
+  // };
 
-  return (
+
+  //Condiotional Rendering incorporating directly using ternaeary Operator
+  return listOfRestro == 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="search">
         <input
@@ -44,8 +53,8 @@ const Body = () => {
       </div>
 
       <div className="resCardContainer">
-        {listOfRestro.map((resData) => (
-          <ResCard resData={resData} />
+        {listOfRestro.map((resData, id) => (
+          <ResCard key={id} resData={resData} />
         ))}
       </div>
     </div>
