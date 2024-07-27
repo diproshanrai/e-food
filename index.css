@@ -44,7 +44,33 @@ height: 60px;
 
 }
 
+.resCard:hover{
+    border: 5px solid black;
+    cursor: pointer;
+}
+
 .resCard img {
     width: 180px;
     height: 130px;
+}
+
+.shim-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shimCard {
+    width: 200px;
+    padding: 10px;
+    background-color: rgb(160, 170, 170);
+    margin: 10px;
+    height: 400px;
+}
+
+.login {
+    width: 70px;
+    height: 20px;
+    background-color: aqua;
+    cursor: pointer;
 }
