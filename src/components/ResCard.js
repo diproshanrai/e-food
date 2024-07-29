@@ -4,7 +4,7 @@ import { Image_URL } from "../utils/constant";
 const ResCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, areaName } =
     props.resData.info;
-    console.log(props.resData.info);
+
 
   return (
     <div className="resCard">

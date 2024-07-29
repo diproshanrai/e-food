@@ -1,17 +1,19 @@
-
 import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestro, setlistOfRestro] = useState([]);
+  const [filterList, setFilterList] = useState([]);
 
   const filteredTopRes = () => {
     const filteredList = listOfRestro.filter(
-      (restaurant) => restaurant.info.avgRating > 4.3
+      (restaurant) => restaurant.avgRating > 4.3
     );
-    setlistOfRestro(filteredList);
+    setFilterList(filteredList);
   };
+
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -27,12 +29,14 @@ const Body = () => {
     setlistOfRestro(
       json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterList(
+      json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
   //Conditional rendering simple
   // if (listOfRestro.length == 0){
   //   return <Shimmer/>
   // };
-
 
   //Condiotional Rendering incorporating directly using ternaeary Operator
   return listOfRestro == 0 ? (
@@ -44,8 +48,24 @@ const Body = () => {
           type="search"
           className="searchBar"
           placeholder="Type Your Food"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
-        <button>Search</button>
+        <button
+          onClick={() => {
+            const filterSearch = listOfRestro.filter((restaurant) => {
+             return restaurant.info.name.toLowerCase().includes(search.toLowerCase());
+             
+            });
+
+            setFilterList(filterSearch);
+            console.log(filterSearch);
+          }}
+        >
+          Search
+        </button>
 
         <button id="listOfRestro" onClick={filteredTopRes}>
           Top Restaurant
@@ -53,7 +73,7 @@ const Body = () => {
       </div>
 
       <div className="resCardContainer">
-        {listOfRestro.map((resData, id) => (
+        {filterList.map((resData, id) => (
           <ResCard key={id} resData={resData} />
         ))}
       </div>
