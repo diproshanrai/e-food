@@ -17,12 +17,15 @@ width: 60px;
 height: 60px;
 }
 
-.links {
+.links ul {
     padding-right: 30px;
+    display: flex;
+    list-style: none;
 }
 
-.links a {
-    margin: 10px;
+.links li {
+    margin-left: 10px;
+    
 }
 
 .search {
@@ -73,4 +76,5 @@ height: 60px;
     height: 20px;
     background-color: aqua;
     cursor: pointer;
+    margin-left: 10px;
 }

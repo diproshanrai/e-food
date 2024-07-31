@@ -1,6 +1,7 @@
 import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestro, setlistOfRestro] = useState([]);
@@ -32,6 +33,8 @@ const Body = () => {
     setFilterList(
       json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    
+    console.log(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   //Conditional rendering simple
   // if (listOfRestro.length == 0){
@@ -61,7 +64,6 @@ const Body = () => {
             });
 
             setFilterList(filterSearch);
-            console.log(filterSearch);
           }}
         >
           Search
@@ -74,7 +76,8 @@ const Body = () => {
 
       <div className="resCardContainer">
         {filterList.map((resData, id) => (
-          <ResCard key={id} resData={resData} />
+          <Link key={resData.info.id} to={"/restaurent/"+ resData.info.id}>
+          <ResCard  resData={resData} /></Link>
         ))}
       </div>
     </div>

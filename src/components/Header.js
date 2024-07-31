@@ -1,14 +1,11 @@
+import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
 import { useEffect, useState } from "react";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
-  console.log("Header Rend")
 
-  useEffect(()=>{
-    console.log("useEffect Rendered")}, [btnName]
-);
-
+  useEffect(() => {}, [btnName]);
 
   return (
     <div className="header">
@@ -17,16 +14,28 @@ const Header = () => {
         <h3>e-Food</h3>
       </div>
       <div className="links">
-        <a href="/">Home</a>
-        <a href="/">Blog</a>
-        <a href="/">Contact Us</a>
-        <a href="/">Cart</a>
-        <button
-          className="login"
-          onClick={() => {
-            btnName === "Login" ? setBtnName("LogOut") : setBtnName("Login");
-          }}
-        >{btnName}</button>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/">Cart</Link>
+          </li>
+          <button
+            className="login"
+            onClick={() => {
+              btnName === "Login" ? setBtnName("LogOut") : setBtnName("Login");
+            }}
+          >
+            {btnName}
+          </button>
+        </ul>
       </div>
     </div>
   );
