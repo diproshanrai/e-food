@@ -4,9 +4,14 @@ import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utils/useRestaurentInfo";
 
 
+
 const ResMenu = () => {
   
+
+
   const {resid} = useParams();
+
+  // const [resInfo, setResInfo] = useState(null);
 
   const resInfo = useRestaurentMenu(resid);
 
@@ -29,10 +34,11 @@ const ResMenu = () => {
   }
 
   const { name, cuisines, costForTwo } = resInfo.cards[2].card.card.info;
+  
 
   const { itemCards } =
     resInfo?.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
-  console.log(name);
+
 
   return (
     <div className="resMenu">

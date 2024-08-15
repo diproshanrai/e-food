@@ -2,6 +2,7 @@ import ResCard from "./ResCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestro, setlistOfRestro] = useState([]);
@@ -33,9 +34,16 @@ const Body = () => {
     setFilterList(
       json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    
-    console.log(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+  
   };
+
+const onlineStatus = useOnlineStatus();
+
+if (onlineStatus === false) {
+  return <h1>Looks like You have some connection issues</h1>
+};
+
   //Conditional rendering simple
   // if (listOfRestro.length == 0){
   //   return <Shimmer/>
