@@ -16,7 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.12.0",
-    "process": "^0.11.10"
+    "postcss": "^8.4.41",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.10"
   },
   "dependencies": {
     "react": "^18.3.1",

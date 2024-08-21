@@ -1,12 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./Header";
-import Body from "./Body";
+import Header from "./src/components/Header";
+import Body from "./src/components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import About from "./About";
-import Contact from "./Contact";
-import Error from "./Error";
-import ResMenu from "./ResMenu";
+import About from "./src/components/About"
+import Contact from "./src/components/Contact";
+import Error from "./src/components/Error";
+import ResMenu from "./src/components/ResMenu";
+import Grocery from "./src/components/Grocery";
 
 const App = () => {
   return (
@@ -17,11 +18,13 @@ const App = () => {
   );
 };
 
+const Grocery = lazy(()=>import("./src/components/Grocery.js"));
+
 const appRender = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error/>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -39,11 +42,14 @@ const appRender = createBrowserRouter([
         path: "/restaurent/:resid",
         element: <ResMenu />,
       },
-    ]
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<h1>Loading.....</h1>}><Grocery /></Suspense>,
+      },
+    ],
   },
-  
 ]);
 
 const display = ReactDOM.createRoot(document.getElementById("root"));
 
-display.render(<RouterProvider router= {appRender} />);
+display.render(<RouterProvider router={appRender} />);

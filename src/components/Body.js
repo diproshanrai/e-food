@@ -10,7 +10,7 @@ const Body = () => {
 
   const filteredTopRes = () => {
     const filteredList = listOfRestro.filter(
-      (restaurant) => restaurant.avgRating > 4.3
+      (restaurant) => restaurant.info.avgRating > 4.5
     );
     setFilterList(filteredList);
   };
